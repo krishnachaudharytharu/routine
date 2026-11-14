@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routine</title>
+    <style>
+        *{
+            margin: 0 0 5px 0;
+            padding: 0;
+        }
+        body{
+            background-color: rgb(16, 16, 95);
+            color: white;
+        }
+        h1{
+            text-align: center;
+            color: red;
+        }
+        .first{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+          
+
+            
+        }
+        form{
+            text-align: center;
+            background-color: white;
+            margin: 15px;
+            padding: 20px 80px;
+            border-radius: 5px;
+        }
+        input{
+            padding: 10px;
+            margin: 8px;
+        }
+        .second{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        table{
+            
+            text-align: center;
+            border-collapse: collapse;
+            
+            
+
+        }
+        h2{
+            text-align: center;
+            color: brown;
+        }
+        th, td{
+            margin: 5px;
+            padding: 10px 50px;
+            border-collapse: collapse;
+            border: 1px black solid;
+            margin: 5px;
+            
+        }
+        .success{
+            background-color:green;
+            color: aliceblue;
+            padding: 10px;
+            text-align: center;
+        }
+        button{
+            margin: 5px;
+            padding: 5px 15px;
+            background-color: rgb(16, 16, 93);
+            border-radius: 8px;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Students Day Planning routine</h1>
+    <br>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% for category, message in messages %}
+            <p class="{{ category }}">
+                {{ message }}
+
+            </p>
+        {% endfor %}
+    {% endwith %}
+    <hr>
+    <br>
+    <h1>Addition of morning routine which have today followed</h1>
+    <div class="first">
+        <div class="box">
+    <form method="POST" action="add_1">
+        <input type="datetime" name="wake_of_time" placeholder="Enter your wake up time">
+        <br><br>
+        <input type="datetime" name="freshen_up" placeholder="Enter the  freshen_up time">
+        <br><br>
+        <input type="datetime" name="exercise" placeholder="Enter the exercise time ">
+        <br><br>
+        <input type="datetime" name="breakfast" placeholder="Enter breakfast time">
+        <br><br>
+        <button type="submit">Add morning</button>
+
+    </form>
+    </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <h1>Addition of study routine which have today followed</h1>
+    <div class="first">
+        <div class="box">
+            <form method="POST" action="add_2">
+                <input type="datetime" name="classes" placeholder="Enter the college time">
+                <br><br>
+                <input type="datetime" name="python_practice" placeholder="Enter the python practice time">
+                <br><br>
+                <input type="datetime" name="java_practice" placeholder="Enter the java Practice time">
+                <br><br>
+                <input type="datetime" name="dsa_practice" placeholder="Enter the DSA practice time">
+                <br><br>
+                <input type="datetime" name="assignment_completion" placeholder="Enter the assignment completion time">
+                <br><br>
+                <button type="submit">Add study</button>
+            </form> 
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <h1>Addition of personal routine which have today followed</h1>
+    <div class="first">
+        <div class="box">
+            <form method="POST" action="add_3">
+            <input type="datetime" name="lunch" placeholder="Enter your lunch time">
+            <br><br>
+            <input type="datetime" name="rest_time" placeholder="Enter rest time">
+            <br><br>
+            <input type="datetime" name="family_time" placeholder="Enter family time">
+            <br><br>
+            <input type="datetime" name="friends_time" placeholder="Entetr friends time">
+            <br><br>
+            <button type="submit">Add personal</button>
+            </form>
+
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <h1>Addition of evening routine which have today followed</h1>
+    <div class="first">
+        <div class="box">
+            <form method="POST" action="add_4">
+            <input type="datetime" name="coding_practice" placeholder="Enter coding practice time">
+            <br><br>
+            <input type="datetime" name="ai_ml_learning" placeholder="Enter AIML learning time">
+            <br><br>
+            <input type="datetime" name="project_dev" placeholder="Enter the project developer time">
+            <br><br>
+            <input type="datetime" name="revision" placeholder="Enter the revision time">
+            <br><br>
+            <button type="submit">Add evening</button>
+            </form>
+
+
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <h1>Addition of night routine which have today followed</h1>
+    <div class="first">
+        <div class="box">
+            <form method="POST" action="add_5">
+                <input type="datetime" name="dinner" placeholder="Enter the dinner time">
+                <br><br>
+                <input type="datetime" name="next_day_planing" placeholder="Enter the next day planing time">
+                <br><br>
+                <input type="datetime" name="reading" placeholder="Enter the reading time">
+                <br><br>
+                <input type="datetime" name="sleep_time" placeholder="Enter the sleep time">
+                <br><br>
+                <button type="submit">Add night</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <h2>Morning routine</h2>
+    <br>
+    <div class="second"></div>
+
+    <table border="1">
+        <tr>
+            <th> Wake up time</th>
+            <th>Freshen up time</th>
+            <th>Exercise time</th>
+            <th>breakfast time</th>
+            <th>Action</th>
+        </tr>
+        {% for morning in morning_list %}
+           <tr>
+            
+            <td>{{ morning.wake_of_time }}</td>
+            <td>{{ morning.freshen_up }}</td>
+            <td>{{ morning.exercise }}</td>
+            <td>{{ morning.breakfast }}</td>
+            
+           </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+    <h2>Study routine</h2>
+    <br>
+     <div class="second">
+
+    <table border="1">
+        <tr>
+            <th>College time</th>
+            <th>Python practice time</th>
+            <th>Java practice time</th>
+            <th>DSA practice time</th>
+            <th>Assignment completion time</th>
+            <th>Action</th>
+        </tr>
+        {% for study in study_list %}
+        <tr>
+            <td>{{ study.classes}}</td>
+            <td>{{ study.python_practice }}</td>
+            <td>{{ study.java_practice }}</td>
+            <td>{{ study.dsa_practice }}</td>
+            <td>{{ study.assignment_completion }}</td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+    
+    </div>
+    <br><br>
+    <h2>Personal routine</h2>
+    <br>
+     <div class="second">
+    <table border="1">
+        <tr>
+            <th>Lunch time</th>
+            <th>Rest time
+            </th>
+            <th>Family time</th>
+            <th>Friends time</th>
+            <th>Action</th>
+        </tr>
+        {% for personal in personal_list %}
+        <tr>
+            <td>{{ personal.lunch }}</td>
+            <td>{{ personal.rest_time }}</td>
+            <td>{{ personal.family_time }}</td>
+            <td>{{ personal.friends_time }}</td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    <br><br>
+    <h2>Evening route</h2>
+    <br>
+     <div class="second">
+    <table border="1">
+        <tr>
+            <th>Coding practice time</th>
+            <th>AIML learning time</th>
+            <th>Project developement time</th>
+            <th>Revision time</th>
+            <th>Action</th>
+        </tr>
+        {% for evening in evening_list %}
+        <tr>
+            <td>{{ evening.coding_practice }}</td>
+            <td>{{ evening.ai_ml_learning }}</td>
+            <td>{{ evening.project_dev }}</td>
+            <td>{{ evening.revision }}</td>
+            <td>
+           
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    <br><br>
+    <h2>Night routine</h2>
+    <br>
+     <div class="second">
+    <table border="1">
+    <tr>
+        <th>Dinner time</th>
+        <th>Next day planing time</th>
+        <th>Reading time</th>
+        <th>Sleep time</th>
+        <th>Action</th>
+    </tr>
+    {% for night in night_list %}
+    <tr>
+        <td>{{ night.dinner }}</td>
+        <td>{{ night.next_day_planing }}</td>
+        <td>{{ night.reading }}</td>
+        <td>{{ night.sleep_time }}</td>
+        
+    </tr>
+    <br><br>
+    
+    
+    
+    {% endfor %}
+    </table>
+    </div>
+
+    <br><br>
+    
+    
+        
+    
+    
+
+</body>
+</html>
